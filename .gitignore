@@ -1,0 +1,5 @@
+bison.def.output
+bison.def.tab.c
+bison.def.tab.h
+flex.def.lex.c
+proj

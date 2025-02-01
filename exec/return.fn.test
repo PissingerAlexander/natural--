@@ -1,0 +1,7 @@
+function add returns i64 (num1 as i64, num2 as i64) {
+	return apply addition to (num1 and num2);
+}
+
+function main returns nothing () {
+	print(call add(b(X)1, b(X)2));
+}

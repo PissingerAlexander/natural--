@@ -1,0 +1,22 @@
+function towerOfHanoi returns nothing(n as i64, from_rod as string, to_rod as string, aux_rod as string) {
+	if (n is equal to b(X)0) then {
+		return;
+	}
+	call towerOfHanoi(apply subtraction to (n and b(X)1), from_rod, aux_rod, to_rod);
+	print(str(Move disk ));
+	print(n);
+	print(str( from rod ));
+	print(from_rod);
+	print(str( to rod ));
+	print(to_rod);
+	print(str(${0x0a}#########################${0x0a}));
+	call towerOfHanoi(apply subtraction to (n and b(X)1), aux_rod, to_rod, from_rod);
+}
+
+function main returns nothing() {
+	num_of_disks as i64;
+	print(str(Enter the number of disks: ));
+	num_of_disks = read number;
+
+	call towerOfHanoi(num_of_disks, str(a), str(b), str(c));
+}

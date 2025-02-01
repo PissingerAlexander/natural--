@@ -1,0 +1,71 @@
+
+function main returns nothing () {
+	option_list = create array of size b(X)5 as string;
+	option_list.push(str(rock));
+	option_list.push(str(paper));
+	option_list.push(str(scissors));
+	option_list.push(str(spock));
+	option_list.push(str(lizard));
+
+	wins as i64 = b(X)0;
+	looses as i64 = b(X)0;
+	last_loose as i64 = b(X);
+
+	user_input as i64;
+	computer as i64;
+	
+	repeat infinite times {
+		print(str(Enter a number between ${0x28}1=Rock, 2=Paper, 3=Scissors, 4=Spok, 5=Lizard${0x29}: ));
+		user_input = read number;
+		if (last_loose is greater than b(X)1) then {
+			computer = call cp_win(user_input);
+		} else {
+			computer = random i64 up to b(X)5;
+		}
+		user_input = apply subtraction to (user_input and b(X)1);
+		print(str(You chose: ));
+		print(option_list.get(user_input));
+		print(str( vs Computer chose: ));
+		print(option_list.get(computer));
+		print(str(${0x0a}));
+		if (
+				(user_input is equal to b(X)0 and (computer is equal to b(X)2 or computer is equal to b(X)4)) or 
+				(user_input is equal to b(X)1 and (computer is equal to b(X)0 or computer is equal to b(X)3)) or 
+				(user_input is equal to b(X)2 and (computer is equal to b(X)1 or computer is equal to b(X)4)) or 
+				(user_input is equal to b(X)3 and (computer is equal to b(X)0 or computer is equal to b(X)3)) or 
+				(user_input is equal to b(X)4 and (computer is equal to b(X)1 or computer is equal to b(X)3))
+		) then {
+			print(str(YOU WON!${0x0a}));
+			wins = apply addition to (wins and b(X)1);
+			last_loose = apply addition to (last_loose and b(X)1);
+			if (last_loose is greater than b(X)1) then {
+				print(str(cheating now${0x0a}));
+			}
+		} else if (user_input is equal to computer) then {
+			print(str(It's a tie, try again${0x0a}));
+		} else {
+			print(str(YOU LOST, try again${0x0a}));
+			looses = apply addition to (looses and b(X)1);
+			last_loose = b(X)0;
+		}
+		print(str(Current score: ));
+		print(wins);
+		print(str( - ));
+		print(looses);
+		print(str(${0x0a}));
+	}
+}
+
+function cp_win returns i64 (input as i64) {
+	if (input is equal to b(X)0) then {
+		return b(X)0;
+	} else if (input is equal to b(X)1) then {
+		return b(X)1;
+	} else if (input is equal to b(X)2) then {
+		return b(X)2;
+	} else if (input is equal to b(X)3) then {
+		return b(X)3;
+	} else {
+		return b(X)4;
+	}
+}

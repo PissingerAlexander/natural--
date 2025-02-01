@@ -1,0 +1,71 @@
+
+function main returns nothing () {
+	line as string;
+	line = read line;
+
+	max_len as i64 = b(X)0;
+	current_len as i64 = b(X)0;
+
+	num_lines as i64 = b(X)2;
+	
+	index as i64 = b(X)0;
+	repeat infinite times {
+		if (line.get(index) is equal to str( )) then {
+			if (current_len is greater than max_len) then {
+				max_len = current_len;
+			}
+			current_len = b(X)0;
+			num_lines = apply addition to (num_lines and b(X)1);
+		} else if (line.get(index) is equal to str(${0x00})) then {
+			if (current_len is greater than max_len) then {
+				max_len = current_len;
+			}
+			current_len = b(X)0;
+			num_lines = apply addition to (num_lines and b(X)1);
+		} else {
+			current_len = apply addition to (current_len and b(X)1);
+		}
+		if (line.get(index) is equal to str(${0x00})) then {
+			exit loop;
+		}
+		index = apply addition to (index and b(X)1);
+	}
+	max_len = apply addition to (max_len and b(X)2);
+
+	index = b(X)0;
+	index2 as i64 = b(X)0;
+	line_index as i64 = b(X)0;
+	repeat num_lines times {
+		if (index is equal to b(X)0 or index is equal to apply subtraction to (num_lines and b(X)1)) then {
+			repeat max_len times {
+				if (index2 is equal to b(X)0 or index2 is equal to apply subtraction to (max_len and b(X)1)) then {
+					print(str(+));
+				} else {
+					print(str(-));
+				}
+				index2 = apply addition to (index2 and b(X)1);
+			}
+			index2 = b(X)0;
+		} else {
+			repeat max_len times {
+				if (index2 is equal to b(X)0 or index2 is equal to apply subtraction to (max_len and b(X)1)) then {
+					print(str(|));
+				} else {
+					if (line.get(line_index) is equal to str( )) then {
+						print(str( ));
+					} else if (line.get(line_index) is equal to str(${0x00})) then {
+						print(str( ));
+					} else {
+						print(line.get(line_index));
+						line_index = apply addition to (line_index and b(X)1);
+					}
+				}
+				index2 = apply addition to (index2 and b(X)1);
+			}
+			index2 = b(X)0;
+			line_index = apply addition to (line_index and b(X)1);
+		}
+		print(str(${0x0a}));
+		index = apply addition to (index and b(X)1);
+	}
+}

@@ -1,0 +1,14 @@
+
+function main returns nothing () {
+	num1 as i64;
+	num1 = random i64 up to b(X)5;
+	print(num1);
+
+	num2 as i64;
+	num2 = read number;
+	print(num2);
+
+	str1 as string;
+	str1 = read line;
+	print(str1);
+}

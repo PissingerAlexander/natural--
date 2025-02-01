@@ -1,0 +1,17 @@
+function main returns nothing () {
+	num1 as i64 = b(X)5;
+	num2 as i64 = b(X)5;
+	if (num1 is equal to b(X)5 and num2 is equal to b(X)5) then {
+		print(str(yes));
+	}
+	if (b(X)3 is equal to b(X)2) then {
+		print(str(is equal));
+		print(str(is it though));
+	} else if (num1 is greater than num2) then {
+		print(num1);
+		print(str(is greater));
+	} else {
+		print(num2);
+		print(str(is greater or equal));
+	}
+}

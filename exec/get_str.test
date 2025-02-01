@@ -1,0 +1,5 @@
+function main returns nothing () {
+	str as string = str(test);
+	print(str.get(b(X)2));
+	print(str(${0x0a}));
+}

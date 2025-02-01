@@ -1,0 +1,4 @@
+function main returns nothing () {
+	str1 as string = str(test${0x0a}1234);
+	print(str1);
+}

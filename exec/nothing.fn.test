@@ -1,0 +1,7 @@
+function prnt returns nothing() {
+	print(str(test));
+}
+
+function main returns nothing() {
+	call prnt();
+}

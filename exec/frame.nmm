@@ -1,5 +1,6 @@
 
 function main returns nothing () {
+	print(str(Enter a sentence: ));
 	line as string;
 	line = read line;
 

@@ -1,5 +1,0 @@
-function main returns nothing () {
-	num1 as i64 = b(X)1234;
-	num2 as i64 = b(X)4321;
-	print(apply subtraction to (num1 and num2));
-}

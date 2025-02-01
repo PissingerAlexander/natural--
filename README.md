@@ -1,6 +1,6 @@
 # natural--
 > [!CAUTION]
-> You should defenetly NOT use this compiler/interpreter, because of memory leaks and bugs!
+> You should defenetly NOT use this interpreter, because of memory leaks and bugs!
 
 # Introduction
 This project provides a complete toolchain for interpreting programs written in my own programming language `natural--`, a language designed to be insecure, buggy, leaking memory and much more bad stuff (but it kinda gets the job done sometimes).
@@ -18,7 +18,7 @@ Ensure you have the following installed:
 git clone https://github.com/PissingerAlexander/natural--.git
 cd natural--
 
-# Build the compiler
+# Build the interpreter
 make
 
 # Optional: clean the project folder

@@ -24,7 +24,7 @@ make
 # Optional: clean the project folder
 make clean
 
-# To delete clean the whole project
+# To clean the whole project including the interpreter executable
 make purge
 ```
 
@@ -33,6 +33,7 @@ make purge
 `./proj script`
 
 # Example Code
+Found in the hello_world.nmm file in the repository root
 ```
 function main returns nothing() {
 	print(str(Hello World!));

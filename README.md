@@ -39,5 +39,5 @@ function main returns nothing() {
 }
 ```
 
-There are more examples in the exec/ directory.
+There are more examples in the `exec/` directory.
 

@@ -1,5 +1,5 @@
 # natural--
 > [!WARNING]
-> Compiler you should defenetly NOT use because of memory leaks and bugs!
+> You should defenetly NOT use this compiler/interpreter, because of memory leaks and bugs!
 
 

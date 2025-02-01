@@ -3,3 +3,14 @@ bison.def.tab.c
 bison.def.tab.h
 flex.def.lex.c
 proj
+
+array.test
+comp.test
+escaped_str.test
+get_str.test
+int.test
+loop.test
+nothing.fn.test
+ran_rn_rl.test
+return.fn.test
+test.test

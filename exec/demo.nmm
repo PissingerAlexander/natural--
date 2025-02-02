@@ -1,0 +1,36 @@
+function main returns nothing() {
+    print(str(Starting program...${0x0a}));
+
+    num1 as i64 = b(X)10;
+    num2 as i64 = b(X)20;
+
+    sum as i64 = call add(num1, num2);
+    print(str(Sum: ));
+    print(sum);
+    print(str(${0x0a}));
+
+    names = create array of size b(X)3 as string;
+    names.push(str(Alice));
+    names.push(str(Bob));
+    names.push(str(Charlie));
+
+    print(str(First name: ));
+    print(names.get(b(X)0));
+    print(str(${0x0a}));
+
+    if (sum is greater than b(X)25) then { 
+        print(str(Sum is greater than 25)); 
+    } else { 
+        print(str(Sum is 25 or less)); 
+    }
+    print(str(${0x0a}));
+
+    repeat b(X)3 times { 
+        print(str(Loop iteration)); 
+    	print(str(${0x0a}));
+    }
+}
+
+function add returns i64 (a as i64, b as i64) {
+    return apply addition to (a and b);
+}

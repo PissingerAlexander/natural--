@@ -26,8 +26,13 @@ function main returns nothing() {
     print(str(${0x0a}));
 
     repeat b(X)3 times { 
-        print(str(Loop iteration)); 
-    	print(str(${0x0a}));
+        print(str(Loop iteration${0x0a})); 
+    }
+
+    repeat b(X)100 times as long as (b(X)0) {
+	print(str(Iter${0x0a}));
+    } or {
+	print(str(Loop else${0x0a}));
     }
 }
 

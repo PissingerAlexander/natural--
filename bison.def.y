@@ -383,10 +383,9 @@ value_t *execute_tree(ast_t *tree) {
 			if (!tree->children[0]) return NULL;
 			return execute_tree(tree->children[0]);
 		}
-		case LOOP_STEP: {
-			return execute_tree(tree->children[0]);
-		}
-		case LOOP_CONDITION: {
+		case LOOP_STEP:
+		case LOOP_CONDITION:
+		case LOOP_ELSE: {
 			return execute_tree(tree->children[0]);
 		}
 		case exit_loop: {

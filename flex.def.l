@@ -5,7 +5,6 @@
 #include "src/headers/stack.h"
 #include "src/headers/value.h"
 #include "src/headers/ast.h"
-#include "src/headers/value_names.h"
 
 #include "bison.def.tab.h"
 
@@ -18,6 +17,11 @@
 	int get_operation(char *str);
 	void append_to_string_buffer(char *buffer, char ch);
 
+	char *var_type_names[] = {
+		"i64",
+		"string",
+		"array"
+	};
 %}
 
 %option noyywrap noinput nounput yylineno stack

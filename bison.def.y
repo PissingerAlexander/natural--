@@ -392,6 +392,80 @@ value_t *execute_tree(ast_t *tree) {
 			EXIT_LOOP = 1;
 			return 0;
 		}
+		case TERM: {
+			return execute_tree(tree->children[0]);
+		}
+		case DECLARE_VAR: {
+			if (s_lookup(stack, tree->var_name)) {
+				printf("Error: variable with name %s already declared.\n", tree->var_name);
+				exit(1);
+			}
+			s_push(stack, tree->var_name, NULL);
+			return 0;
+		}
+		case INIT_VAR: {
+			if (s_lookup(stack, tree->var_name)) {
+				printf("Error: variable with name %s already declared.\n", tree->var_name);
+				exit(1);
+			}
+			value_t *value = execute_tree(tree->children[0]);
+			s_push(stack, tree->var_name, value);
+			return 0;
+		}
+		case ASSIGN_VAR: {
+			var_t *var = s_lookup(stack, tree->var_name);
+			if (!var) {
+				printf("Error: Cannot assign value to %s, variable does not exist.\n", tree->var_name);
+				exit(1);
+			}
+			value_t *value = execute_tree(tree->children[0]);
+			if (value->type != var->value->type) {
+				printf("Error: variable types do not match\n");
+				exit(1);
+			}
+			switch (var->value->type) {
+				case T_INT: var->value->v.int_num = value->v.int_num; break;
+				case T_STR: strcpy(var->value->v.str, value->v.str); break;
+				default: {
+					printf("Error cannot assing var\n");
+					exit(1);
+				}
+			}
+			return 0;
+		}
+		case RETRIVE_VAR: {
+			var_t *var = s_lookup(stack, tree->var_name);
+			if (!var) {
+				printf("Error: Variable with name %s does not exist\n", tree->var_name);
+				exit(1);
+			}
+			if (!var->value) {
+				printf("Error: Variable with name %s is NULL pointer\n", tree->var_name);
+				exit(1);
+			}
+			return var->value;
+		}
+		case i64: {
+			value_t *value = new_value_ptr();
+			value->type = T_INT;
+			value->v.int_num = tree->value->v.int_num;
+			return value;
+		}
+		case string: {
+			value_t *value = new_value_ptr();
+			value->type = T_STR;
+			value->v.str = strdup(tree->value->v.str);
+			value->v.int_num = tree->value->v.int_num;
+			return value;
+		}
+		case create_array: {
+			value_t *arr = (value_t *)malloc(sizeof(value_t) * (tree->value->v.int_num + 1));
+			arr[0].v.int_num = tree->value->v.int_num;
+			arr[0].is_array = 1;
+			arr[0].type = tree->value->type;
+			s_push(stack, tree->var_name, arr);
+			return 0;
+		}
 		case PUSH: {
 			var_t *arr_var = s_lookup(stack, tree->var_name);
 			value_t *arr = arr_var->value;
@@ -452,84 +526,6 @@ value_t *execute_tree(ast_t *tree) {
 				}
 			}
 			return ret;
-		}
-		case TERM: {
-			return execute_tree(tree->children[0]);
-		}
-		case i64: {
-			value_t *value = new_value_ptr();
-			value->type = T_INT;
-			value->v.int_num = tree->value->v.int_num;
-			return value;
-		}
-		case f64: {
-			printf("Error: floats not implemented yet\n");
-			exit(0);
-		}
-		case string: {
-			value_t *value = new_value_ptr();
-			value->type = T_STR;
-			value->v.str = strdup(tree->value->v.str);
-			value->v.int_num = tree->value->v.int_num;
-			return value;
-		}
-		case create_array: {
-			value_t *arr = (value_t *)malloc(sizeof(value_t) * (tree->value->v.int_num + 1));
-			arr[0].v.int_num = tree->value->v.int_num;
-			arr[0].is_array = 1;
-			arr[0].type = tree->value->type;
-			s_push(stack, tree->var_name, arr);
-			return 0;
-		}
-		case DECLARE_VAR: {
-			if (s_lookup(stack, tree->var_name)) {
-				printf("Error: variable with name %s already declared.\n", tree->var_name);
-				exit(1);
-			}
-			s_push(stack, tree->var_name, NULL);
-			return 0;
-		}
-		case INIT_VAR: {
-			if (s_lookup(stack, tree->var_name)) {
-				printf("Error: variable with name %s already declared.\n", tree->var_name);
-				exit(1);
-			}
-			value_t *value = execute_tree(tree->children[0]);
-			s_push(stack, tree->var_name, value);
-			return 0;
-		}
-		case ASSIGN_VAR: {
-			var_t *var = s_lookup(stack, tree->var_name);
-			if (!var) {
-				printf("Error: Cannot assign value to %s, variable does not exist.\n", tree->var_name);
-				exit(1);
-			}
-			value_t *value = execute_tree(tree->children[0]);
-			if (value->type != var->value->type) {
-				printf("Error: variable types do not match\n");
-				exit(1);
-			}
-			switch (var->value->type) {
-				case T_INT: var->value->v.int_num = value->v.int_num; break;
-				case T_STR: strcpy(var->value->v.str, value->v.str); break;
-				default: {
-					printf("Error cannot assing var\n");
-					exit(1);
-				}
-			}
-			return 0;
-		}
-		case RETRIVE_VAR: {
-			var_t *var = s_lookup(stack, tree->var_name);
-			if (!var) {
-				printf("Error: Variable with name %s does not exist\n", tree->var_name);
-				exit(1);
-			}
-			if (!var->value) {
-				printf("Error: Variable with name %s is NULL pointer\n", tree->var_name);
-				exit(1);
-			}
-			return var->value;
 		}
 		case ADD: {
 			value_t *value = new_value_ptr();

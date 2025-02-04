@@ -17,8 +17,6 @@ enum {
 	CALL,
 	ARGUMENT,
 	RETURN,
-	STATEMENT,
-	TERM,
 	IF,
 	ELSE,
 	ELSE_IF,
@@ -27,6 +25,7 @@ enum {
 	LOOP_STEP,
 	LOOP_CONDITION,
 	LOOP_ELSE,
+	TERM,
 	DECLARE_VAR,
 	INIT_VAR,
 	ASSIGN_VAR,
@@ -57,6 +56,6 @@ ast_t *node5(int type, ast_t *child_one, ast_t *child_two, ast_t *child_three, a
 
 void print_ast(ast_t *tree);
 
-char *getAstNodeTypeName(int typeId);
+char *get_ast_node_type_name(int typeId);
 
 #endif

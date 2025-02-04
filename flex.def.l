@@ -37,7 +37,7 @@ BLOCK_COMMENT	"/*"
 END_COMMENT	"*/"
 
 TYPE_SEPARATOR	as
-TYPE		(i64|f64|string|char|array)
+TYPE		(i64|string|array)
 ASSIGN		"="
 END_STATEMENT	";"
 

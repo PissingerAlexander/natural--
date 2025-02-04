@@ -40,7 +40,6 @@
 }
 
 %token 	<value>			i64 
-	<value>			f64 
 	<value>			string escaped_string_part
 	<value>			type
 	<operation>		operation
@@ -77,9 +76,9 @@
 %%
 
 program: FUNCTIONS { 
-	// printf("  ###################################  \n");
-	// print_ast($1);
-	// printf("\n  ###################################  \n\n\n");
+	printf("  ###################################  \n");
+	print_ast($1);
+	printf("\n  ###################################  \n\n\n");
 	fn_t * fun = s_lookup_fn(global_fn, "main");
 	execute_tree(fun->fn_root);
 }
@@ -179,10 +178,6 @@ TERM: var_name assign TERM {
     }
     | i64 { 
 		$$ = node0(i64);
-		$$->value = $1;
-    }
-    | f64 { 
-		$$ = node0(f64);
 		$$->value = $1;
     }
     | string {
@@ -702,7 +697,7 @@ value_t *execute_tree(ast_t *tree) {
 			return 0;
 		}
 		default: {
-			printf("Unsupported node type %s\n", getAstNodeTypeName(tree->type));
+			printf("Unsupported node type %s\n", get_ast_node_type_name(tree->type));
 			break;
 		}
 	}

@@ -44,7 +44,7 @@ numbers = create array of size b(X)5 as i64;
 ## Variables
 The programming language supports statically and strongly typed variables, all of which are stored on the global stack. Variables must be declared with an explicit type before use. During declaration, a variable can be initialized and later reassigned.
 
-Examples:
+Example:
 ```plaintext
 VAR_NAME as TYPE;
 VAR_NAME as TYPE = VALUE;

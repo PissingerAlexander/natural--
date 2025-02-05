@@ -1,5 +1,4 @@
 # Natural--
-
 ## Entry Point
 The entry point of a program is a function called `main`, which serves as starting point for execution. It is defined as follows:
 
@@ -33,42 +32,24 @@ numbers = create array of size b(X)5 as i64;
 ```
 
 ## Variables
-The programming language supports variables which are stored globally on the stack.
+The programming language supports statically and strongly typed variables, all of which are stored on the global stack. Variables must be declared with an explicit type before use. During declaration, a variable can be initialized and later reassigned.
 
-### Declaration
-Variables must be declared before use with an explicit type:
+Examples:
 ```plaintext
 VAR_NAME as TYPE;
-```
-
-### Initialization
-A variable can be initialized at the time of declaration:
-```plaintext
 VAR_NAME as TYPE = VALUE;
-```
-
-### Reassignment
-Once declared, a variable's value can be inizialized or reassigned:
-```plaintext
 VAR_NAME = NEW_VALUE;
 ```
 
 ## Number Representation
 Numbers can be represented in various bases, using a special syntax:
-
-### Decimal (Base 10)
 ```plaintext
-var as i64 = b(X)4;
-```
-
-### Binary (Base 2)
-```plaintext
+// Binary (Base 2)
 bin as i64 = b(II)1101;
-```
-
-### Hexadecimal (Base 16)
-```plaintext
-hex as i64 = b(XVI)1af3;
+// Decimal (Base 10)
+var as i64 = b(X)4;
+// Hexadecimal (Base 16)
+hex as i64 = b(XVI)a12b;
 ```
 The notation `b(BASE)VALUE` specifies the numerical base using Roman numerals.
 
@@ -76,10 +57,6 @@ The notation `b(BASE)VALUE` specifies the numerical base using Roman numerals.
 Strings are sequences of characters, which can include escaped characters:
 ```plaintext
 str as string = str(Test${0x0a});
-```
-Example:
-```plaintext
-message as string = str(Hello, ${0x0a}World!);
 ```
 Explanation:
 - `str( ... )` marks the beginning of a string.
@@ -185,7 +162,7 @@ if (score is greater than b(X)50) then {
 ```
 
 ### Logical Operators
-If there are multiple conditions to be checked, the `and` and `or` operators can be used.
+If there are multiple conditions to be checked, the `and` and `or` operators can be used:
 - `or`: Evaluates as true if at least one condition is met.
 - `and`: Evaluates as true only if both conditions are met.
 
@@ -237,3 +214,8 @@ Example:
 sum = call add(10, 20);
 ```
 
+## Built-in Functions
+The programming language provides three built-in functions for handling user input and randomization:
+* `VAR_NAME = random number up to NUMBER;` which assings a random number between 0 and `NUMBER`.
+* `VAR_NAME = get number;` which retrives a numerical input from the user.
+* `VAR_NAME = get line;` which reads a entire line of text input until new line character.

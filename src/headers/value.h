@@ -10,7 +10,6 @@ typedef struct ast_struct ast_t;
 
 enum value_types {
 	T_INT,
-	T_FL,
 	T_STR,
 	T_ARR,
 	M_FN,
@@ -22,7 +21,6 @@ typedef struct value_struct {
 	int is_array;
 	union {
 		long int_num;
-		double fl_num;
 		char *str;
 		ast_t *fn;
 	} v;

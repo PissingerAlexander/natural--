@@ -1,3 +1,13 @@
+# Project Structure
+- `bison.def.y`: Parser, building and executing the complete abstract syntax tree
+- `flex.def.y`: Lexer, reading the file, tokanize and give to the parser
+- `src`: Utility functions and structures
+    - `headers`: Folder with the header files for utility
+    - `ast.c`: File containing functions to create ast nodes, print the tree and get names for the ast tree type
+    - `queue.c`: File containing functions to create a queue, enqueue to a queue and push parameters on the stack
+    - `stack.c`: File containing functions to create a stack, push and pop of a stack and search for variables
+    - `value.c`: File containing functions to create, copy and free a value pointer for the stack
+
 # Natural--
 ## Entry Point
 The entry point of a program is a function called `main`, which serves as starting point for execution. It is defined as follows:

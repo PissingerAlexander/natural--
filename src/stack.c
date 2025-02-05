@@ -75,7 +75,6 @@ void s_print(stack_t *s) {
 	while (node != NULL) {
 		switch(node->var->value->type) {
 			case T_INT: printf("%s with value %ld\n", node->var->var_name, node->var->value->v.int_num); break;
-			case T_FL: printf("%s with value %f\n", node->var->var_name, node->var->value->v.fl_num);
 			case T_STR: printf("%s with value %s\n", node->var->var_name, node->var->value->v.str);
 		}
 		node = node->prev;

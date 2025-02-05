@@ -1,12 +1,12 @@
 # Project Structure
-- `bison.def.y`: Parser, building and executing the complete abstract syntax tree
-- `flex.def.y`: Lexer, reading the file, tokanize and give to the parser
-- `src`: Utility functions and structures
-    - `headers`: Folder with the header files for utility
-    - `ast.c`: File containing functions to create ast nodes, print the tree and get names for the ast tree type
-    - `queue.c`: File containing functions to create a queue, enqueue to a queue and push parameters on the stack
-    - `stack.c`: File containing functions to create a stack, push and pop of a stack and search for variables
-    - `value.c`: File containing functions to create, copy and free a value pointer for the stack
+- `bison.def.y`: Parser: Builds and executes the complete abstract syntax tree.
+- `flex.def.y`: Lexer: Reads the file, tokenizes it, and passes the tokens to the parser.
+- `src/`: Utility functions and structs:
+    - `headers/`: Contains header files for utility functions.
+    - `ast.c`: Provides functions to create AST nodes, print the tree, and retrieve names for AST node types.
+    - `queue.c`: Implements a queue, including functions to enqueue elements and push parameters onto the stack.
+    - `stack.c`: Implements a stack, including functions to push, pop, and search for variables.
+    - `value.c`: Provides functions to create, copy, and free value pointers for the stack.
 
 # Natural--
 ## Entry Point
